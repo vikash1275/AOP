@@ -5,12 +5,17 @@
  */
 package com.aop.test.model;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
 /**
  *
  * @author user
  */
 
+@Entity
 public class Employee {
+        @Id
 	private String empId;
 	private String name;
 
