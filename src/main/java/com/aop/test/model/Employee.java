@@ -6,6 +6,8 @@
 package com.aop.test.model;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 /**
@@ -15,8 +17,10 @@ import javax.persistence.Id;
 
 @Entity
 public class Employee {
+    
         @Id
-	private String empId;
+        @GeneratedValue(strategy = GenerationType.AUTO)
+	private int empId;
 	private String name;
 
 	public Employee() {
@@ -30,11 +34,11 @@ public class Employee {
 		this.name = name;
 	}
 
-	public String getEmpId() {
+	public int getEmpId() {
 		return empId;
 	}
 
-	public void setEmpId(String empId) {
+	public void setEmpId(int empId) {
 		this.empId = empId;
 	}
 

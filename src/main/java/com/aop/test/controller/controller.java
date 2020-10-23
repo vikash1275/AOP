@@ -25,9 +25,9 @@ public class controller {
 	private EmployeeService employeeService;
 
 	@RequestMapping(value = "/add/employee", method = RequestMethod.GET)
-	public Employee addEmployee(@RequestParam("name") String name, @RequestParam("empId") String empId) {
+	public Employee addEmployee(Employee emp) {
 
-		return employeeService.createEmployee(name, empId);
+		return employeeService.createEmployee(emp);
 
 	}
 

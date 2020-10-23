@@ -5,6 +5,7 @@
  */
 package com.aop.test.aspect;
 
+import com.aop.test.model.Employee;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Aspect;
@@ -20,16 +21,16 @@ import org.springframework.stereotype.Component;
 @Component
 public class EmployeeServiceAspect {
     
-        @Before(value = "execution(* com.aop.test.service.EmployeeService.*(..)) and args(name,empId)")
-	public void beforeAdvice(JoinPoint joinPoint, String name, String empId) {
+        @Before(value = "execution(* com.aop.test.service.EmployeeService.*(..)) and args(emp)")
+	public void beforeAdvice(JoinPoint joinPoint, Employee emp) {
 		System.out.println("Before method:" + joinPoint.getSignature());
-		System.out.println("Creating Employee with name - " + name + " and id - " + empId);
+		System.out.println("Creating Employee with name - " + emp.getName() + " and id - " + emp.getEmpId());
 	}
 
-	@After(value = "execution(* com.aop.test.service.EmployeeService.*(..)) and args(name,empId)")
-	public void afterAdvice(JoinPoint joinPoint, String name, String empId) {
+	@After(value = "execution(* com.aop.test.service.EmployeeService.*(..)) and args(emp)")
+	public void afterAdvice(JoinPoint joinPoint, Employee emp) {
 		System.out.println("After method:" + joinPoint.getSignature());
-		System.out.println("Successfully created Employee with name - " + name + " and id - " + empId);
+		System.out.println("Successfully created Employee with name - " + emp.getName() + " and id - " + emp.getEmpId());
 	}
     
 }

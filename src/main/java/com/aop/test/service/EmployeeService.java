@@ -6,6 +6,8 @@
 package com.aop.test.service;
 
 import com.aop.test.model.Employee;
+import com.aop.test.repository.EmployeeRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Service;
 
@@ -18,11 +20,12 @@ import org.springframework.stereotype.Service;
 @Service
 public class EmployeeService {
     
-    public Employee createEmployee(String name, String empId) {
+    @Autowired
+    EmployeeRepository emprepo;
+    
+    public Employee createEmployee(Employee emp) {
 
-		Employee emp = new Employee();
-		emp.setName(name);
-		emp.setEmpId(empId);
+		emprepo.save(emp);
 		return emp;
 	}
 
